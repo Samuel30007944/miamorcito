@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Para mi amor Pono 💌</title>
   <link rel="stylesheet" href="estilos.css" />
+  <!-- Fuente romántica de Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -13,17 +14,17 @@
   <div class="corazones-esquinas">❤️</div>
   <div class="corazones-esquinas bottom">❤️</div>
 
-  <!-- Carta cerrada -->
-  <div class="carta-cerrada" id="cartaCerrada">
-    💌 Haz clic para abrir la carta mi amor Pono
-  </div>
+  <!-- Carta cerrada, botón para abrir -->
+<div class="carta-cerrada" id="cartaCerrada">
+  💌 Haz clic para abrir la carta mi amor Pono
+</div>
 
-  <!-- Carta abierta -->
+  <!-- Carta abierta con texto animado -->
   <div class="carta-abierta oculto" id="cartaAbierta">
     <p id="textoCarta"></p>
   </div>
 
-  <!-- Slideshow de fotos -->
+  <!-- Slideshow de fotos, inicialmente oculto -->
   <div id="slideshow" class="oculto">
     <img src="miamor1.jpeg" alt="Foto 1" class="slide" />
     <img src="miamor2.jpeg" alt="Foto 2" class="slide oculto" />
@@ -40,34 +41,33 @@
     <img src="miamor13.jpeg" alt="Foto 13" class="slide oculto" />
     <img src="miamor14.jpeg" alt="Foto 14" class="slide oculto" />
     <img src="miamor15.jpeg" alt="Foto 15" class="slide oculto" />
+    
+    <!-- Agrega más fotos si quieres -->
   </div>
 
-  <!-- Música inicial -->
+  <!-- Música de fondo -->
   <audio id="musica" loop>
     <source src="mi amor.mp3" type="audio/mp3" />
     Tu navegador no soporta audio.
   </audio>
 
-  <!-- Nueva música final -->
-  <audio id="musicaFinal" loop>
-    <source src="miamorfinal.mp3" type="audio/mp3" />
-    Tu navegador no soporta audio.
-  </audio>
+<div class="lluvia-corazones">
+  <!-- Puedes duplicar o agregar más si quieres -->
+  <div class="corazon">❤️</div>
+  <div class="corazon">💖</div>
+  <div class="corazon">😍</div>
+  <div class="corazon">💘</div>
+  <div class="corazon">💕</div>
+  <div class="corazon">❤️</div>
+  <div class="corazon">💓</div>
+  <div class="corazon">💗</div>
+  <div class="corazon">💝</div>
+  <div class="corazon">❤️</div>
+</div>
 
-  <!-- Corazones lloviendo -->
-  <div class="lluvia-corazones">
-    <div class="corazon">❤️</div>
-    <div class="corazon">💖</div>
-    <div class="corazon">😍</div>
-    <div class="corazon">💘</div>
-    <div class="corazon">💕</div>
-    <div class="corazon">❤️</div>
-    <div class="corazon">💓</div>
-    <div class="corazon">💗</div>
-    <div class="corazon">💝</div>
-    <div class="corazon">❤️</div>
-  </div>
 
+  <!-- Script JS para animaciones -->
   <script src="script.js"></script>
+
 </body>
 </html>
