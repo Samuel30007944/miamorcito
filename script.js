@@ -13,8 +13,7 @@ Gracias por tu amor 💞, por tu paciencia 🧘‍♀️, por seguir ahí inclus
 **Feliz aniversario atrasado, mi vida** 🎂🎈. No importa si han pasado horas o días, lo importante es que **mi amor por ti sigue aquí, intacto, firme y eterno** 💝💫.
 
 Con todo mi corazón,  
-**Sami** 💌💕
-`;
+**Sami** 💌💕`;
 
 let index = 0;
 const velocidad = 50;
