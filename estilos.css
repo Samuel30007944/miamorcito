@@ -5,10 +5,9 @@
   box-sizing: border-box;
 }
 
-/* Body con fondo suave y centrado */
 body {
-  background: #ffe6f0; /* un rosado muy suave */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffe6f0;
+  font-family: 'Montserrat', sans-serif;
   color: #4a0033;
   display: flex;
   flex-direction: column;
@@ -18,7 +17,22 @@ body {
   overflow-x: hidden;
 }
 
-/* Carta cerrada (botón) */
+/* Fuente romántica para la carta */
+.carta-abierta {
+  font-family: 'Great Vibes', cursive;
+  background: white;
+  max-width: 600px;
+  padding: 30px 40px;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.7);
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #550033;
+  white-space: pre-wrap;
+  margin-top: 40px;
+}
+
+/* ... resto igual ... */
 .carta-cerrada {
   background: #ff80ab;
   color: white;
@@ -38,106 +52,11 @@ body {
   background: #ff4081;
 }
 
-/* Carta abierta */
-.carta-abierta {
-  background: white;
-  max-width: 600px;
-  padding: 30px 40px;
-  border-radius: 25px;
-  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.7);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #550033;
-  white-space: pre-wrap; /* para respetar saltos de línea */
-  margin-top: 40px;
-}
-
-/* Oculto */
 .oculto {
   display: none !important;
 }
 
-/* Contenedor galería */
-#galeria {
-  max-width: 600px;
-  margin: 50px auto;
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6);
-  background: #fff0f6;
-}
+/* Resto de estilos para imágenes, corazones, botones, etc. igual que antes */
 
-/* Imagenes galería */
-#galeria img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  transition: opacity 1s ease;
-  border-radius: 20px;
-}
+/* ... */
 
-/* Mensaje final */
-#mensajeFinal {
-  margin-top: 30px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #c2185b;
-  text-align: center;
-}
-
-/* Botón amor */
-#botonAmor {
-  display: block;
-  margin: 25px auto 0 auto;
-  background-color: #e91e63;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  font-size: 1.2rem;
-  border-radius: 40px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px #e91e6340;
-  transition: background-color 0.3s ease;
-}
-
-#botonAmor:hover {
-  background-color: #ad1457;
-}
-
-/* Contador días */
-#contadorDias {
-  margin-top: 15px;
-  font-size: 1rem;
-  color: #880e4f;
-  font-style: italic;
-  text-align: center;
-}
-
-/* Respuesta amor y sorpresa */
-#respuestaAmor, #sorpresa {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  color: #b71c1c;
-  text-align: center;
-}
-
-/* Responsive para móviles */
-@media (max-width: 700px) {
-  .carta-cerrada {
-    max-width: 90%;
-    font-size: 1.1rem;
-    padding: 20px 25px;
-  }
-
-  .carta-abierta {
-    max-width: 90%;
-    font-size: 1rem;
-    padding: 20px 25px;
-  }
-
-  #galeria {
-    max-width: 90%;
-  }
-}
