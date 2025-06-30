@@ -1,4 +1,11 @@
-/* Fuente principal */
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo general */
 body {
   font-family: 'Quicksand', sans-serif;
   background: linear-gradient(to bottom, #fff1f8, #ffe3ec);
@@ -10,6 +17,7 @@ body {
   padding: 20px;
   overflow-x: hidden;
   position: relative;
+  text-align: center;
 }
 
 /* Corazones en las esquinas */
@@ -23,13 +31,13 @@ body {
 }
 
 .corazones-esquinas.bottom {
-  bottom: 10px;
   top: auto;
+  bottom: 10px;
   right: 10px;
   left: auto;
 }
 
-/* Latido de corazones */
+/* Animación de latido */
 @keyframes latido {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.2); }
@@ -44,7 +52,6 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
-  text-align: center;
   box-shadow: 0 0 15px rgba(255, 0, 150, 0.3);
   transition: transform 0.3s;
   max-width: 90%;
@@ -71,13 +78,12 @@ body {
   z-index: 10;
 }
 
-/* Texto animado (efecto máquina de escribir) */
 #textoCarta {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-/* Slideshow de fotos */
+/* Slideshow */
 #slideshow {
   margin-top: 40px;
   display: flex;
@@ -134,7 +140,6 @@ body {
   }
 }
 
-/* Generar corazones en posiciones aleatorias */
 .corazon:nth-child(1) { left: 5%; animation-delay: 0s; }
 .corazon:nth-child(2) { left: 20%; animation-delay: 1s; }
 .corazon:nth-child(3) { left: 35%; animation-delay: 2s; }
@@ -146,12 +151,63 @@ body {
 .corazon:nth-child(9) { left: 40%; animation-delay: 1.3s; }
 .corazon:nth-child(10) { left: 70%; animation-delay: 2.1s; }
 
+/* Contador */
+.contador {
+  font-size: 1.3rem;
+  color: #c2185b;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+/* Botón "haz clic si me amas" */
+#botonAmorContainer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#botonAmor {
+  padding: 15px 25px;
+  font-size: 1.3rem;
+  background-color: #ff80ab;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  animation: latido 1.2s infinite;
+  box-shadow: 0 0 10px rgba(255, 0, 150, 0.3);
+}
+
+/* Botón sorpresa */
+#botonSorpresaContainer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#botonSorpresa {
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  background-color: #ffb6c1;
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(255, 0, 100, 0.3);
+}
+
+#sorpresa {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #c2185b;
+}
+
 /* Oculto */
 .oculto {
   display: none;
 }
 
-/* Responsive: celular y tablet */
+/* Responsive */
 @media (max-width: 768px) {
   body {
     padding: 10px;
@@ -190,5 +246,9 @@ body {
 
   #textoCarta {
     font-size: 1.2rem;
+  }
+
+  .contador {
+    font-size: 1.1rem;
   }
 }
