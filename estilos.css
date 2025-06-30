@@ -1,110 +1,106 @@
-/* Fuentes románticas */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;500&display=swap');
-
-/* Estilo global */
+/* Fuente principal */
 body {
-  background: #fff0f6;
-  margin: 0;
   font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(to bottom, #fff1f8, #ffe3ec);
   color: #333;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden;
   position: relative;
 }
 
 /* Corazones en las esquinas */
 .corazones-esquinas {
   position: fixed;
-  font-size: 2.5rem;
-  top: 15px;
-  left: 15px;
-  animation: latido 1.5s infinite;
-  user-select: none;
-  pointer-events: none;
-  z-index: 10;
+  top: 10px;
+  left: 10px;
+  font-size: 3rem;
+  animation: latido 1.2s infinite;
+  z-index: 1000;
 }
+
 .corazones-esquinas.bottom {
+  bottom: 10px;
   top: auto;
-  bottom: 15px;
+  right: 10px;
   left: auto;
-  right: 15px;
 }
+
+/* Latido de corazones */
 @keyframes latido {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.3); opacity: 0.7; }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
 /* Carta cerrada */
 .carta-cerrada {
-  cursor: pointer;
-  max-width: 600px;
-  margin: 100px auto;
-  background: #ffccdd;
+  background-color: #ffc4d6;
+  color: #fff;
   padding: 30px 40px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
   text-align: center;
-  font-size: 1.8rem;
-  border-radius: 25px;
-  box-shadow: 0 6px 25px rgba(255, 0, 90, 0.3);
-  user-select: none;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 0, 150, 0.3);
+  transition: transform 0.3s;
+  max-width: 90%;
+  margin-top: 40px;
 }
+
 .carta-cerrada:hover {
-  background-color: #ffb3cc;
+  transform: scale(1.05);
 }
 
 /* Carta abierta */
 .carta-abierta {
+  background-color: #fff0f5;
+  border-radius: 12px;
+  padding: 30px;
   max-width: 600px;
-  margin: 40px auto;
+  margin: 30px auto;
+  text-align: left;
+  font-size: 1.4rem;
   font-family: 'Great Vibes', cursive;
-  font-size: 1.9em;
-  line-height: 1.5em;
-  background: white;
-  padding: 30px 40px;
-  border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  line-height: 2.2rem;
+  box-shadow: 0 0 20px rgba(255, 0, 120, 0.2);
+  position: relative;
+  z-index: 10;
+}
+
+/* Texto animado (efecto máquina de escribir) */
+#textoCarta {
   white-space: pre-wrap;
-  opacity: 1;
-  transition: opacity 0.7s ease;
+  word-wrap: break-word;
 }
 
 /* Slideshow de fotos */
 #slideshow {
-  max-width: 700px;
-  margin: 40px auto;
-  position: relative;
-  height: 600px;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 6px 25px rgba(255, 0, 90, 0.2);
-  background: #fff0f6;
+  margin-top: 40px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+  flex-direction: column;
 }
 
-/* Imagen del slideshow */
 .slide {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
+  max-width: 90vw;
   height: auto;
-  object-fit: contain;
-  object-position: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 1.5s ease-in-out;
-  opacity: 1;
-  z-index: 1;
-  background-color: transparent;
+  border-radius: 15px;
+  margin: 10px auto;
+  display: none;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  transition: opacity 1s ease-in-out;
 }
 
-.slide.oculto {
-  opacity: 0;
-  pointer-events: none;
-  z-index: 0;
+.slide.active {
+  display: block;
+  opacity: 1;
 }
 
 /* Lluvia de corazones */
@@ -115,115 +111,84 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
   overflow: hidden;
+  z-index: 1;
 }
-.lluvia-corazones .corazon {
+
+.corazon {
   position: absolute;
-  top: -5%;
-  font-size: 1.5rem;
-  animation: caer 10s linear infinite;
-  opacity: 0.8;
-  color: #ff6699;
+  top: -50px;
+  font-size: 2rem;
+  animation: caer 5s linear infinite;
+  opacity: 0.7;
 }
+
 @keyframes caer {
   0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.8;
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 1;
   }
   100% {
-    transform: translateY(120vh) rotate(360deg);
+    transform: translateY(100vh) rotate(360deg);
     opacity: 0;
   }
 }
 
-/* Variaciones de posición de corazones */
-.lluvia-corazones .corazon:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 7s; }
-.lluvia-corazones .corazon:nth-child(2) { left: 10%; animation-delay: 1s; animation-duration: 9s; }
-.lluvia-corazones .corazon:nth-child(3) { left: 20%; animation-delay: 2s; animation-duration: 10s; }
-.lluvia-corazones .corazon:nth-child(4) { left: 30%; animation-delay: 3s; animation-duration: 8s; }
-.lluvia-corazones .corazon:nth-child(5) { left: 40%; animation-delay: 4s; animation-duration: 11s; }
-.lluvia-corazones .corazon:nth-child(6) { left: 60%; animation-delay: 1s; animation-duration: 7s; }
-.lluvia-corazones .corazon:nth-child(7) { left: 70%; animation-delay: 2.5s; animation-duration: 9s; }
-.lluvia-corazones .corazon:nth-child(8) { left: 80%; animation-delay: 0.5s; animation-duration: 8s; }
-.lluvia-corazones .corazon:nth-child(9) { left: 90%; animation-delay: 3s; animation-duration: 10s; }
-.lluvia-corazones .corazon:nth-child(10) { left: 95%; animation-delay: 5s; animation-duration: 12s; }
+/* Generar corazones en posiciones aleatorias */
+.corazon:nth-child(1) { left: 5%; animation-delay: 0s; }
+.corazon:nth-child(2) { left: 20%; animation-delay: 1s; }
+.corazon:nth-child(3) { left: 35%; animation-delay: 2s; }
+.corazon:nth-child(4) { left: 50%; animation-delay: 0.5s; }
+.corazon:nth-child(5) { left: 65%; animation-delay: 1.5s; }
+.corazon:nth-child(6) { left: 80%; animation-delay: 2.5s; }
+.corazon:nth-child(7) { left: 90%; animation-delay: 3s; }
+.corazon:nth-child(8) { left: 10%; animation-delay: 0.7s; }
+.corazon:nth-child(9) { left: 40%; animation-delay: 1.3s; }
+.corazon:nth-child(10) { left: 70%; animation-delay: 2.1s; }
 
-/* Clase para ocultar elementos */
+/* Oculto */
 .oculto {
-  display: none !important;
+  display: none;
 }
 
-/* --------------- */
-/* MEDIA QUERIES para móviles y tablets */
-/* --------------- */
-
+/* Responsive: celular y tablet */
 @media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 16px;
+  }
+
   .carta-cerrada {
-    max-width: 90%;
-    font-size: 1.5rem;
-    padding: 25px 30px;
-    margin: 80px auto;
+    font-size: 1.2rem;
+    padding: 20px;
+    max-width: 95%;
   }
 
   .carta-abierta {
-    max-width: 90%;
-    font-size: 1.5em;
-    padding: 25px 30px;
-    margin: 30px auto;
-    line-height: 1.4em;
-  }
-
-  #slideshow {
-    max-width: 90%;
-    height: 400px;
-    margin: 30px auto;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    padding: 20px;
+    max-width: 95%;
   }
 
   .slide {
-    max-width: 100%;
-    max-height: 100%;
-    /* centrar y ajustar igual */
-    width: auto;
+    max-width: 95vw;
     height: auto;
   }
 
-  .corazones-esquinas {
-    font-size: 2rem;
-    top: 10px;
-    left: 10px;
-  }
-  .corazones-esquinas.bottom {
-    bottom: 10px;
-    right: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .carta-cerrada {
-    font-size: 1.3rem;
-    padding: 20px 25px;
-    margin: 70px auto;
-  }
-
-  .carta-abierta {
-    font-size: 1.2em;
-    padding: 20px 25px;
-    margin: 20px auto;
-    line-height: 1.3em;
-  }
-
   #slideshow {
-    height: 300px;
+    margin-top: 20px;
   }
 
   .corazones-esquinas {
-    font-size: 1.8rem;
-    top: 8px;
-    left: 8px;
+    font-size: 2.2rem;
   }
-  .corazones-esquinas.bottom {
-    bottom: 8px;
-    right: 8px;
+
+  .lluvia-corazones .corazon {
+    font-size: 1.5rem;
+  }
+
+  #textoCarta {
+    font-size: 1.2rem;
   }
 }
