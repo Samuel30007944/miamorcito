@@ -1,243 +1,143 @@
-/* --- Reset básico --- */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Fondo y cuerpo */
+/* Body con fondo suave y centrado */
 body {
-  background: #fff0f6;
-  color: #333;
+  background: #ffe6f0; /* un rosado muy suave */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #4a0033;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
   padding: 20px;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Carta cerrada */
+/* Carta cerrada (botón) */
 .carta-cerrada {
+  background: #ff80ab;
+  color: white;
+  padding: 25px 40px;
+  border-radius: 20px;
   cursor: pointer;
-  background: #ffe6f0;
-  border: 2px solid #ff69b4;
-  padding: 20px 40px;
-  border-radius: 15px;
-  font-size: 1.5rem;
-  color: #d81e5b;
-  box-shadow: 0 4px 10px rgba(216, 30, 91, 0.4);
+  font-size: 1.4rem;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
   user-select: none;
-  transition: background-color 0.3s ease;
+  max-width: 350px;
   text-align: center;
-  max-width: 400px;
-  margin-bottom: 30px;
+  transition: background 0.3s ease;
+  margin-top: 50px;
 }
 
 .carta-cerrada:hover {
-  background-color: #ffd1e6;
+  background: #ff4081;
 }
 
 /* Carta abierta */
 .carta-abierta {
-  background: #fff0f6;
-  border-radius: 20px;
-  padding: 30px;
+  background: white;
   max-width: 600px;
-  font-size: 1.2rem;
+  padding: 30px 40px;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.7);
+  font-size: 1.1rem;
   line-height: 1.6;
-  color: #880e4f;
-  box-shadow: 0 6px 20px rgba(216, 30, 91, 0.3);
-  white-space: pre-wrap;
-  margin-bottom: 40px;
+  color: #550033;
+  white-space: pre-wrap; /* para respetar saltos de línea */
+  margin-top: 40px;
 }
 
 /* Oculto */
 .oculto {
-  display: none;
+  display: none !important;
 }
 
-/* Galería de fotos */
+/* Contenedor galería */
 #galeria {
-  display: flex;
-  justify-content: center;  /* Centra horizontalmente */
-  align-items: center;      /* Centra verticalmente */
-  height: 80vh;             /* Ocupa el 80% de la altura del viewport */
-  width: 100%;
-  max-width: 700px;
+  max-width: 600px;
+  margin: 50px auto;
+  position: relative;
   overflow: hidden;
-  background: #fff0f6;
   border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(216, 30, 91, 0.3);
-  margin-bottom: 40px;
+  box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6);
+  background: #fff0f6;
 }
 
+/* Imagenes galería */
 #galeria img {
-  max-width: 80%;           /* Que no sean más anchas que 80% del contenedor */
-  max-height: 100%;         /* Que no sobrepasen el alto del contenedor */
-  object-fit: contain;      /* Ajusta la imagen sin recortarla ni deformar */
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(216, 30, 91, 0.3);
-  transition: opacity 1s ease-in-out;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition: opacity 1s ease;
+  border-radius: 20px;
 }
 
 /* Mensaje final */
-.mensaje-final {
-  font-size: 2rem;
-  color: #d81e5b;
+#mensajeFinal {
+  margin-top: 30px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #c2185b;
   text-align: center;
-  margin-bottom: 20px;
-  animation: latido 1.5s infinite;
-}
-
-/* Animación latido */
-@keyframes latido {
-  0%, 100% {
-    transform: scale(1);
-    color: #d81e5b;
-  }
-  50% {
-    transform: scale(1.1);
-    color: #ff4081;
-  }
 }
 
 /* Botón amor */
-#botonAmor button {
-  background: #ff69b4;
-  border: none;
-  padding: 15px 30px;
-  font-size: 1.2rem;
-  color: white;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.6);
-  transition: background-color 0.3s ease;
-  margin: 0 auto 30px auto;
+#botonAmor {
   display: block;
+  margin: 25px auto 0 auto;
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #e91e6340;
+  transition: background-color 0.3s ease;
 }
 
-#botonAmor button:hover {
-  background-color: #ff4081;
+#botonAmor:hover {
+  background-color: #ad1457;
 }
 
-/* Respuesta amor */
-.respuesta-amor {
-  font-size: 1.8rem;
+/* Contador días */
+#contadorDias {
+  margin-top: 15px;
+  font-size: 1rem;
   color: #880e4f;
+  font-style: italic;
   text-align: center;
-  margin-bottom: 20px;
-  animation: brillo 2s infinite;
 }
 
-/* Animación brillo */
-@keyframes brillo {
-  0%, 100% {
-    text-shadow: 0 0 10px #ff4081;
-  }
-  50% {
-    text-shadow: 0 0 20px #ff80ab;
-  }
-}
-
-/* Sorpresa secreta */
-.sorpresa-secreta {
-  font-size: 1.3rem;
-  color: #ad1457;
-  background: #ffe6f0;
-  border-radius: 15px;
-  padding: 20px;
-  max-width: 500px;
-  margin: 0 auto 30px auto;
+/* Respuesta amor y sorpresa */
+#respuestaAmor, #sorpresa {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #b71c1c;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(173, 20, 87, 0.3);
 }
 
-/* Contador de días */
-.contador-dias {
-  font-size: 1.5rem;
-  color: #c2185b;
-  text-align: center;
-  margin-bottom: 40px;
-  font-weight: 600;
-}
-
-/* Adaptación para móvil */
-@media (max-width: 600px) {
+/* Responsive para móviles */
+@media (max-width: 700px) {
   .carta-cerrada {
     max-width: 90%;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    padding: 20px 25px;
   }
 
   .carta-abierta {
     max-width: 90%;
     font-size: 1rem;
-    padding: 20px;
+    padding: 20px 25px;
   }
 
   #galeria {
-    height: 60vh;
     max-width: 90%;
-  }
-
-  #galeria img {
-    max-width: 90%;
-  }
-
-  .mensaje-final {
-    font-size: 1.5rem;
-  }
-
-  #botonAmor button {
-    font-size: 1rem;
-    padding: 12px 25px;
-  }
-
-  .respuesta-amor {
-    font-size: 1.2rem;
-  }
-
-  .sorpresa-secreta {
-    max-width: 90%;
-    font-size: 1rem;
-  }
-
-  .contador-dias {
-    font-size: 1.2rem;
-  }
-}
-
-/* Corazones animados a los lados */
-.corazones-esquinas {
-  position: fixed;
-  font-size: 2rem;
-  animation: lluviaCorazones 4s linear infinite;
-  opacity: 0.8;
-  user-select: none;
-  top: 10%;
-  left: 5%;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.corazones-esquinas.bottom {
-  top: auto;
-  bottom: 10%;
-  right: 5%;
-  left: auto;
-  animation-delay: 2s;
-}
-
-@keyframes lluviaCorazones {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
   }
 }
