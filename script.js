@@ -18,10 +18,13 @@ Con todo mi corazón,
 
 let index = 0;
 const velocidad = 50;
+
 const cartaCerrada = document.getElementById("cartaCerrada");
 const cartaAbierta = document.getElementById("cartaAbierta");
 const textoCarta = document.getElementById("textoCarta");
 const musica = document.getElementById("musica");
+const musicaFinal = document.getElementById("musicaFinal");
+
 const imagenes = [
   "miamor1.jpeg",
   "miamor2.jpeg",
@@ -46,25 +49,86 @@ function escribirTexto() {
     index++;
     setTimeout(escribirTexto, velocidad);
   } else {
-    setTimeout(mostrarFotos, 3000); // Espera 3 segundos tras el texto
+    setTimeout(mostrarFotos, 3000);
   }
 }
 
 function mostrarFotos() {
   cartaAbierta.classList.add("oculto");
+
   const contenedor = document.createElement("div");
   contenedor.id = "galeria";
   document.body.appendChild(contenedor);
+
   let i = 0;
   const img = document.createElement("img");
   img.src = imagenes[i];
   img.className = "foto-transicion";
   contenedor.appendChild(img);
 
-  setInterval(() => {
-    i = (i + 1) % imagenes.length;
-    img.src = imagenes[i];
+  const intervalo = setInterval(() => {
+    i++;
+    if (i >= imagenes.length) {
+      clearInterval(intervalo);
+      setTimeout(mostrarMensajeFinal, 1000);
+      return;
+    }
+    img.style.opacity = 0;
+    setTimeout(() => {
+      img.src = imagenes[i];
+      img.style.opacity = 1;
+    }, 1000);
   }, 4000);
+}
+
+function mostrarMensajeFinal() {
+  const mensajeFinal = document.getElementById("mensajeFinal");
+  const botonAmor = document.getElementById("botonAmor");
+  const contadorDias = document.getElementById("contadorDias");
+
+  mensajeFinal.classList.remove("oculto");
+  botonAmor.classList.remove("oculto");
+  contadorDias.classList.remove("oculto");
+
+  musica.pause();
+  musicaFinal.play();
+
+  iniciarContador();
+}
+
+function mostrarSorpresa() {
+  const respuestaAmor = document.getElementById("respuestaAmor");
+  const sorpresa = document.getElementById("sorpresa");
+  respuestaAmor.classList.remove("oculto");
+  sorpresa.classList.remove("oculto");
+}
+
+function iniciarContador() {
+  const inicio = new Date("2025-03-26T00:00:00");
+
+  function actualizar() {
+    const ahora = new Date();
+    let diff = Math.floor((ahora - inicio) / 1000);
+
+    const meses = Math.floor(diff / (30 * 24 * 60 * 60));
+    diff %= 30 * 24 * 60 * 60;
+
+    const dias = Math.floor(diff / (24 * 60 * 60));
+    diff %= 24 * 60 * 60;
+
+    const horas = Math.floor(diff / 3600);
+    diff %= 3600;
+
+    const minutos = Math.floor(diff / 60);
+    const segundos = diff % 60;
+
+    const texto = `Hoy llevamos 💑 ${meses} meses, ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos juntos...`;
+
+    document.getElementById("contadorDias").innerText = texto;
+  }
+
+  actualizar();
+  setInterval(actualizar, 1000);
 }
 
 cartaCerrada.addEventListener("click", () => {
