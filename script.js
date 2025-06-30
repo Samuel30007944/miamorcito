@@ -1,4 +1,12 @@
-const textoCompleto = `Mi amor 😘💌
+// Elementos HTML
+const cartaCerrada = document.getElementById('cartaCerrada');
+const cartaAbierta = document.getElementById('cartaAbierta');
+const textoCarta = document.getElementById('textoCarta');
+const musica = document.getElementById('musica');
+
+// Texto dividido por partes (párrafos)
+const mensajes = [
+  `Mi amor 😘💌
 
 Aunque nos separan kilómetros 🌍 y el tiempo a veces parece jugar en nuestra contra ⏳, quiero que sepas que no hay distancia suficiente para disminuir lo que siento por ti ❤️. Al contrario, cada día que pasa lejos de ti, mi corazón se fortalece 💪💕 y mi amor crece más profundo, más verdadero 🥰, porque amarte a la distancia me ha enseñado el valor real de lo que significa estar unidos de alma 💫, aunque el cuerpo no pueda estar siempre cerca.
 
@@ -13,128 +21,67 @@ Gracias por tu amor 💞, por tu paciencia 🧘‍♀️, por seguir ahí inclus
 **Feliz aniversario atrasado, mi vida** 🎂🎈. No importa si han pasado horas o días, lo importante es que **mi amor por ti sigue aquí, intacto, firme y eterno** 💝💫.
 
 Con todo mi corazón,  
-**Sami** 💌💕`;
-
-let index = 0;
-const velocidad = 50;
-
-const cartaCerrada = document.getElementById("cartaCerrada");
-const cartaAbierta = document.getElementById("cartaAbierta");
-const textoCarta = document.getElementById("textoCarta");
-const musica = document.getElementById("musica");
-const musicaFinal = document.getElementById("musicaFinal");
-
-const imagenes = [
-  "miamor1.jpeg",
-  "miamor2.jpeg",
-  "miamor3.jpeg",
-  "miamor4.jpeg",
-  "miamor5.jpeg",
-  "miamor6.jpeg",
-  "miamor7.jpeg",
-  "miamor8.jpeg",
-  "miamor9.jpeg",
-  "miamor10.jpeg",
-  "miamor11.jpeg",
-  "miamor12.jpeg",
-  "miamor13.jpeg",
-  "miamor14.jpeg",
-  "miamor15.jpeg"
+**Sami** 💌💕`
 ];
 
-function escribirTexto() {
-  if (index < textoCompleto.length) {
-    textoCarta.innerHTML += textoCompleto.charAt(index);
-    index++;
-    setTimeout(escribirTexto, velocidad);
-  } else {
-    setTimeout(mostrarFotos, 3000);
-  }
-}
+// Función para animar letra por letra cada parte
+function mostrarPaginasTexto(paginas, elemento, velocidad, callbackFinal) {
+  let paginaActual = 0;
 
-function mostrarFotos() {
-  cartaAbierta.classList.add("oculto");
-
-  const contenedor = document.createElement("div");
-  contenedor.id = "galeria";
-  document.body.appendChild(contenedor);
-
-  let i = 0;
-  const img = document.createElement("img");
-  img.src = imagenes[i];
-  img.className = "foto-transicion";
-  contenedor.appendChild(img);
-
-  const intervalo = setInterval(() => {
-    i++;
-    if (i >= imagenes.length) {
-      clearInterval(intervalo);
-      setTimeout(mostrarMensajeFinal, 1000);
-      return;
-    }
-    img.style.opacity = 0;
-    setTimeout(() => {
-      img.src = imagenes[i];
-      img.style.opacity = 1;
-    }, 1000);
-  }, 4000);
-}
-
-function mostrarMensajeFinal() {
-  const mensajeFinal = document.getElementById("mensajeFinal");
-  const botonAmor = document.getElementById("botonAmor");
-  const contadorDias = document.getElementById("contadorDias");
-
-  mensajeFinal.classList.remove("oculto");
-  botonAmor.classList.remove("oculto");
-  contadorDias.classList.remove("oculto");
-
-  musica.pause();
-  musicaFinal.play();
-
-  iniciarContador();
-}
-
-function mostrarSorpresa() {
-  const respuestaAmor = document.getElementById("respuestaAmor");
-  const sorpresa = document.getElementById("sorpresa");
-  respuestaAmor.classList.remove("oculto");
-  sorpresa.classList.remove("oculto");
-}
-
-function iniciarContador() {
-  const inicio = new Date("2025-03-26T00:00:00");
-
-  function actualizar() {
-    const ahora = new Date();
-    let diff = Math.floor((ahora - inicio) / 1000);
-
-    const meses = Math.floor(diff / (30 * 24 * 60 * 60));
-    diff %= 30 * 24 * 60 * 60;
-
-    const dias = Math.floor(diff / (24 * 60 * 60));
-    diff %= 24 * 60 * 60;
-
-    const horas = Math.floor(diff / 3600);
-    diff %= 3600;
-
-    const minutos = Math.floor(diff / 60);
-    const segundos = diff % 60;
-
-    const texto = `Hoy llevamos 💑 ${meses} meses, ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos juntos...`;
-
-    document.getElementById("contadorDias").innerText = texto;
+  function mostrarPagina() {
+    elemento.textContent = '';
+    elemento.style.opacity = 1;
+    let i = 0;
+    const texto = paginas[paginaActual];
+    const intervalo = setInterval(() => {
+      elemento.textContent += texto[i];
+      i++;
+      if (i >= texto.length) {
+        clearInterval(intervalo);
+        setTimeout(() => {
+          elemento.style.opacity = 0;
+          setTimeout(() => {
+            paginaActual++;
+            if (paginaActual < paginas.length) {
+              mostrarPagina();
+            } else {
+              if (callbackFinal) callbackFinal();
+            }
+          }, 700); // transición entre páginas
+        }, 5000); // tiempo de lectura por página
+      }
+    }, velocidad);
   }
 
-  actualizar();
-  setInterval(actualizar, 1000);
+  mostrarPagina();
 }
 
-cartaCerrada.addEventListener("click", () => {
-  cartaCerrada.classList.add("oculto");
-  cartaAbierta.classList.remove("oculto");
-  musica.play().catch(() => {
-    console.log("Reproducción automática bloqueada");
-  });
-  escribirTexto();
+// Función para iniciar el slideshow de fotos
+function mostrarSlideshow() {
+  const slideshow = document.getElementById('slideshow');
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  // Ocultar carta
+  cartaAbierta.style.opacity = 0;
+  setTimeout(() => {
+    cartaAbierta.classList.add('oculto');
+    slideshow.classList.remove('oculto');
+  }, 1000);
+
+  // Mostrar las fotos en bucle
+  setInterval(() => {
+    slides[current].classList.add('oculto');
+    current = (current + 1) % slides.length;
+    slides[current].classList.remove('oculto');
+  }, 7000); // cambia cada 7 segundos
+}
+
+// Al hacer clic en la carta cerrada
+cartaCerrada.addEventListener('click', () => {
+  cartaCerrada.classList.add('oculto');
+  cartaAbierta.classList.remove('oculto');
+  textoCarta.style.opacity = 1;
+  musica.play();
+  mostrarPaginasTexto(mensajes, textoCarta, 65, mostrarSlideshow);
 });
