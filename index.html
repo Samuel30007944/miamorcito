@@ -8,21 +8,17 @@
 </head>
 <body>
 
-  <!-- Corazones animados en esquinas -->
   <div class="corazones-esquinas">❤️</div>
   <div class="corazones-esquinas bottom">❤️</div>
 
-  <!-- Carta cerrada: botón para abrir -->
   <div class="carta-cerrada" id="cartaCerrada">
     💌 Haz clic para abrir la carta para mi amor Pono
   </div>
 
-  <!-- Carta abierta con texto animado -->
   <div class="carta-abierta oculto" id="cartaAbierta">
     <p id="textoCarta"></p>
   </div>
 
-  <!-- Mensajes y botones finales, ocultos inicialmente -->
   <div id="mensajeFinal" class="oculto">
     Gracias por ser tú, por nuestro amor infinito 😍💖
   </div>
@@ -41,17 +37,20 @@
 
   <div id="contadorDias" class="oculto"></div>
 
-  <!-- Música inicial y final -->
+  <!-- Música inicial -->
   <audio id="musica" loop>
-    <source src="miamor.mp3" type="audio/mp3" />
-    Tu navegador no soporta audio.
-  </audio>
-  <audio id="musicaFinal" loop>
-    <source src="miamorfinal.mp3" type="audio/mp3" />
+    <source src="mi amor.mp3" type="audio/mp3" />
+    <source src="musica_inicial.ogg" type="audio/ogg" />
     Tu navegador no soporta audio.
   </audio>
 
-  <!-- Tu script JS -->
+  <!-- Música final -->
+  <audio id="musicaFinal" loop>
+    <source src="miamorfinal.mp3" type="audio/mp3" />
+    <source src="musica_final.ogg" type="audio/ogg" />
+    Tu navegador no soporta audio.
+  </audio>
+
   <script src="script.js"></script>
 </body>
 </html>
