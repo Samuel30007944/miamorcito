@@ -133,6 +133,8 @@ function iniciarContador() {
 cartaCerrada.addEventListener("click", () => {
   cartaCerrada.classList.add("oculto");
   cartaAbierta.classList.remove("oculto");
-  musica.play();
+  musica.play().catch(() => {
+    console.log("Reproducción automática bloqueada");
+  });
   escribirTexto();
 });
